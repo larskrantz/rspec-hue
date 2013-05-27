@@ -1,7 +1,8 @@
 require 'rspec/core/formatters/base_text_formatter'
 require 'huey'
 
-class RHue < RSpec::Core::Formatters::BaseTextFormatter
+class RHue #< RSpec::Core::Formatters::BaseTextFormatter
+	def initialize options = {}; end
 	def dump_summary(duration, example_count, failure_count, pending_count)
 		huey_init
 		if failure_count > 0 
@@ -10,9 +11,12 @@ class RHue < RSpec::Core::Formatters::BaseTextFormatter
 			passed
 		end
 	end
+	def method_missing(m, *args, &block) end
 
 	private
 	def huey_init
+	 	# Must do this, othwerwise Huey starts pushing out debug messages
+	 	Huey::Config.logger = ::Logger.new(nil)
 		unless @huey_is_configured
 			Huey.configure do |config|
 				config.ssdp = true
@@ -47,5 +51,5 @@ class RHue < RSpec::Core::Formatters::BaseTextFormatter
 		bulb.ct = 500
 		bulb.xy = [ 0.408, 0.517 ]
 		bulb.commit
-	end		
+	end	
 end
