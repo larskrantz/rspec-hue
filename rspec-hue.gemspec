@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Rspec::Hue::VERSION
   spec.authors       = ["Lars Krantz"]
   spec.email         = ["lars.krantz@alaz.se"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Light up philips hue when testing}
+  spec.summary       = %q{Let Hue indicate if tests are passing or not}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "gemfury"
+  spec.add_development_dependency "gem-release"
+  spec.add_development_dependency "autotest-standalone"
+  spec.add_runtime_dependency     "huey"
 end
