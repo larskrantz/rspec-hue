@@ -1,11 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rspec/hue/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-hue"
-  spec.version       = Rspec::Hue::VERSION
+  spec.version       = '0.0.1' 
   spec.authors       = ["Lars Krantz"]
   spec.email         = ["lars.krantz@alaz.se"]
   spec.description   = %q{Light up philips hue when testing}
