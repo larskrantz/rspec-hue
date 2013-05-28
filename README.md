@@ -1,6 +1,6 @@
 # RSpecHue
 
-RSpecHue is a formatter for RSpec that will show the status of your tests to the entire office using Philips Hue.
+RSpecHue is a formatter for RSpec that will show the status of your tests to the entire office using [Philips Hue][].
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-RSpecHue depends on the awesome [Huey](https://github.com/Veraticus/huey) gem that will auto-discover, using [SSDP](http://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol) your [Philips Hue](http://www.meethue.com/). 
+RSpecHue depends on the [Huey](https://github.com/Veraticus/huey) gem that will auto-discover your [Philips Hue][] using [SSDP](http://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol). 
 Or if you want, you can configure it to use a static ip-address.
 
 On first usage, you will have to press the link button on your Hue when prompted, or right before running your first test with the Hue formatter.
@@ -75,3 +75,5 @@ RSpecHue will not break tests if the Hue isn't found, or if the rspec\_hue\_ligh
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[Philips Hue]: http://www.meethue.com/
