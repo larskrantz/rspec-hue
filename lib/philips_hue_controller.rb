@@ -26,7 +26,7 @@ class PhilipsHueController
 			ssdp_ip: '239.255.255.250',
 			ssdp_port: 1900,
 			ttl: 1,
-			hue_api_user_name: '29b6dc6100397272a74dd2a1f6f545b',
+			api_user: '29b6dc6100397272a74dd2a1f6f545b',
 			bulb_transition_time: 1,
 			output: StringIO.new,
 			bulb_id: nil,
@@ -72,7 +72,7 @@ class PhilipsHueController
 					config.hue_ip = configuration[:hue_ip]
 				end
 				# Change this if you don't like the included uuid.
-				config.uuid = configuration[:hue_api_user_name]
+				config.uuid = configuration[:api_user]
 				init_bulb
 			end
 		rescue Huey::Errors::CouldNotFindHue

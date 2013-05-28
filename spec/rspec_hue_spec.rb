@@ -19,6 +19,9 @@ describe RSpecHue do
 		it "should be able to set :rspec_hue_passed_color" do
 			expect { set_rspec_setting :rspec_hue_passed_color }.to_not raise_exception
 		end
+		it "should be able to set :rspec_hue_api_user" do
+			expect { set_rspec_setting :rspec_hue_api_user }.to_not raise_exception
+		end
 	end
 	context "when corresponding to the formatter interface" do
 		let(:controller) do

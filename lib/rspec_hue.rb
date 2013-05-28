@@ -21,6 +21,7 @@ class RSpecHue
 			c.add_setting :rspec_hue_ip
 			c.add_setting :rspec_hue_failed_color
 			c.add_setting :rspec_hue_passed_color
+			c.add_setting :rspec_hue_api_user
 		end
 	end
 
@@ -30,9 +31,11 @@ class RSpecHue
 		failed_color = RSpec.configuration.rspec_hue_failed_color
 		passed_color = RSpec.configuration.rspec_hue_passed_color
 		hue_ip = RSpec.configuration.rspec_hue_ip
+		api_user = RSpec.configuration.rspec_hue_api_user
 		options[:failed_color] = failed_color unless failed_color.nil?
 		options[:passed_color] = passed_color unless passed_color.nil?
 		options[:hue_ip] = hue_ip unless hue_ip.nil?
+		options[:api_user] = api_user unless api_user.nil?
 		PhilipsHueController.new options
 	end
 	def bulb_controller
