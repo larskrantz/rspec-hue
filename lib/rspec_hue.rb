@@ -17,7 +17,7 @@ class RSpecHue
 
 	def self.configure()
 		RSpec.configure do |c|
-			c.add_setting :rspec_hue_bulb_id
+			c.add_setting :rspec_hue_light_id
 			c.add_setting :rspec_hue_ip
 			c.add_setting :rspec_hue_failed_color
 			c.add_setting :rspec_hue_passed_color
@@ -27,7 +27,7 @@ class RSpecHue
 
 	private
 	def setup_philips_hue_controller
-		options = {bulb_id: RSpec.configuration.rspec_hue_bulb_id }
+		options = {bulb_id: RSpec.configuration.rspec_hue_light_id }
 		failed_color = RSpec.configuration.rspec_hue_failed_color
 		passed_color = RSpec.configuration.rspec_hue_passed_color
 		hue_ip = RSpec.configuration.rspec_hue_ip

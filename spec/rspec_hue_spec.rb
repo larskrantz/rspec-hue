@@ -7,8 +7,8 @@ describe RSpecHue do
 				config.send (setting.to_s + "=").to_sym, "foo_value"
 			end
 		end
-		it "should be able to set :rspec_hue_bulb_id" do
-			expect { set_rspec_setting :rspec_hue_bulb_id }.to_not raise_exception
+		it "should be able to set :rspec_hue_light_id" do
+			expect { set_rspec_setting :rspec_hue_light_id }.to_not raise_exception
 		end
 		it "should be able to set :rspec_hue_ip" do
 			expect { set_rspec_setting :rspec_hue_ip }.to_not raise_exception
