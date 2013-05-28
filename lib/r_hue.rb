@@ -4,7 +4,6 @@ require 'huey'
 class RHue #< RSpec::Core::Formatters::BaseTextFormatter
 	def initialize output = nil
 		@output = output || StringIO.new
-		@bulb_id_to_use = RSpec.configuration.rspec_hue_lamp_id || 1
 	end
 	def dump_summary(duration, example_count, failure_count, pending_count)
 		huey_init
@@ -22,6 +21,7 @@ class RHue #< RSpec::Core::Formatters::BaseTextFormatter
 	end
 	private
 	def huey_init
+		@bulb_id_to_use = RSpec.configuration.rspec_hue_lamp_id
 	 	# Must do this, othwerwise Huey starts pushing out debug messages
 	 	Huey::Config.logger = ::Logger.new(nil)
 		begin		
