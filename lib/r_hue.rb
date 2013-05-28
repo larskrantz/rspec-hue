@@ -43,6 +43,7 @@ class RHue #< RSpec::Core::Formatters::BaseTextFormatter
 				@huey_is_configured = true
 			end
 			@bulb = Huey::Bulb.find(bulb_id_to_use)
+			@bulb.on = true
 			@bulb.transitiontime = 1
 		rescue Huey::Errors::CouldNotFindHue
 			output.puts "----> RHue: No Philips Hue found, skipping"
