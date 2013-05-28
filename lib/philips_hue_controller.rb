@@ -75,11 +75,14 @@ class PhilipsHueController
 				config.uuid = configuration[:api_user]
 				init_bulb
 			end
+		rescue Huey::Errors::Error, Huey::Errors::InternalBridgeError, Huey::Errors::HueResponseError
+			output.puts "RSpecHue: Generic, unknown, Hue error, skipping"
+			@bulb = passed_bulb_or_null_bulb
 		rescue Huey::Errors::CouldNotFindHue
-			output.puts "----> RHue: No Philips Hue found, skipping"
+			output.puts "RSpecHue: No Philips Hue found, skipping"
 			@bulb = passed_bulb_or_null_bulb
 		rescue Huey::Errors::PressLinkButton
-			output.puts "----> RHue: Not authorized, press linkbutton on Philips Hue, then press enter here to continue, or q and enter to skip."
+			output.puts "RSpecHue: Not authorized, press linkbutton on Philips Hue, then press enter here to continue, or q and enter to skip."
 			if STDIN.tty?
 				input = gets.strip 
 				unless input.downcase == "q"
