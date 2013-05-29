@@ -25,7 +25,7 @@ class PhilipsHueController
 			hue_ip: nil,
 			ssdp_ip: '239.255.255.250',
 			ssdp_port: 1900,
-			ssdp_ttl: 2,
+			ssdp_ttl: 3,
 			api_user: '29b6dc6100397272a74dd2a1f6f545b',
 			bulb_transition_time: 1,
 			output: StringIO.new,
