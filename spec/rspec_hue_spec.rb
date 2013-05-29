@@ -4,7 +4,7 @@ describe RspecHue do
 	context "when configuring rspec settings" do
 		def set_rspec_setting setting
 			RSpec.configure do |config|
-				config.send (setting.to_s + "=").to_sym, "foo_value"
+				config.send (setting.to_s + "=").to_sym, RSpec.configuration.send(setting)
 			end
 		end
 		it "should be able to set :rspec_hue_light_id" do
