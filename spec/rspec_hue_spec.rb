@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RSpecHue do
+describe RspecHue do
 	context "when configuring rspec settings" do
 		def set_rspec_setting setting
 			RSpec.configure do |config|
@@ -30,7 +30,7 @@ describe RSpecHue do
 			c.stub(:passed)
 			c
 		end
-		let(:formatter) { RSpecHue.new StringIO.new, controller: controller }
+		let(:formatter) { RspecHue.new StringIO.new, controller: controller }
 		it "should respond dump_summary" do
 			expect { formatter.dump_summary 123,2,1,1 }.to_not raise_exception
 		end

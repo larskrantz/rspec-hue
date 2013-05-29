@@ -1,7 +1,7 @@
 require 'rspec'
 require 'philips_hue_controller'
 
-class RSpecHue 
+class RspecHue 
 	def initialize output, additional_args = {}
 		@output = output || StringIO.new
 		@bulb_controller = additional_args.fetch(:controller) { setup_philips_hue_controller }
@@ -43,4 +43,4 @@ class RSpecHue
 	end
 end	
 
-RSpecHue.configure
+RspecHue.configure
