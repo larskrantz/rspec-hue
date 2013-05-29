@@ -17,9 +17,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
   spec.required_ruby_version = Gem::Requirement.new(">=1.9.3")
+  spec.extra_rdoc_files = %w(LICENSE.txt README.md)
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "yard"
   spec.add_runtime_dependency     "rspec"
   spec.add_runtime_dependency     "huey"
 end
