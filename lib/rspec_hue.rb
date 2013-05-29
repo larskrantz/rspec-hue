@@ -41,7 +41,7 @@ class RspecHue
 		@failure_count > 0
 	end
 	def setup_philips_hue_controller
-		options = { bulb_id_to_use: RSpec.configuration.rspec_hue_light_id, output: @output }
+		options = { bulb_id_to_use: RSpec.configuration.rspec_hue_light_id, output: output }
 		failed_color = RSpec.configuration.rspec_hue_failed_color
 		passed_color = RSpec.configuration.rspec_hue_passed_color
 		hue_ip = RSpec.configuration.rspec_hue_ip
