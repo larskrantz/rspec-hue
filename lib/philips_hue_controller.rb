@@ -1,10 +1,10 @@
 require 'huey'
-require 'ostruct'
+require 'null_bulb'
 
 class PhilipsHueController
 	def initialize options = {}
 		@configuration = default_options.merge options
-		if configuration[:bulb].nil?
+		if configuration.has_key? :bulb_id_to_use
 			init_philips_hue
 		else
 			@bulb = passed_bulb_or_null_bulb
@@ -25,12 +25,10 @@ class PhilipsHueController
 			hue_ip: nil,
 			ssdp_ip: '239.255.255.250',
 			ssdp_port: 1900,
-			ttl: 2,
+			ssdp_ttl: 2,
 			api_user: '29b6dc6100397272a74dd2a1f6f545b',
 			bulb_transition_time: 1,
 			output: StringIO.new,
-			bulb_id: nil,
-			bulb: nil,
 			failed_color: { bri: 183, ct: 500, xy: [ 0.6731, 0.3215 ] },
 			passed_color: { bri: 57, ct: 500, xy: [ 0.408, 0.517 ] }
 		}
@@ -42,14 +40,11 @@ class PhilipsHueController
 		@bulb
 	end
 	def passed_bulb_or_null_bulb
-		configuration.fetch(:bulb, OpenStruct.new )
+		configuration.fetch(:bulb, NullBulb.new )
 	end
 	def init_bulb
-		if configuration[:bulb_id_to_use].nil?
-			@bulb = passed_bulb_or_null_bulb
-		else
-			@bulb = Huey::Bulb.find(configuration[:bulb_id_to_use])
-		end
+		@bulb = Huey::Bulb.find(configuration[:bulb_id_to_use]) if configuration.has_key? :bulb_id_to_use
+		@bulb = passed_bulb_or_null_bulb if @bulb.nil? #Huey return nil if not found
 		@bulb.on = true
 		@bulb.transitiontime = configuration[:bulb_transition_time]
 	end
