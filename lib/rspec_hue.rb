@@ -10,7 +10,7 @@ class RspecHue
 		if failure_count > 0 
 			bulb_controller.failed
 		else
-			bubl_controller.passed
+			bulb_controller.passed
 		end
 	end
 	def method_missing(m, *args, &block) end
