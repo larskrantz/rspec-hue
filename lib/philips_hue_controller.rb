@@ -71,14 +71,14 @@ class PhilipsHueController
 				init_bulb
 			end
 		rescue Huey::Errors::Error, Huey::Errors::InternalBridgeError, Huey::Errors::HueResponseError
-			output.puts "RSpecHue: Generic, unknown, Hue error, skipping"
+			output.puts "RspecHue: Generic, unknown, Hue error, skipping"
 			@bulb = passed_bulb_or_null_bulb
 		rescue Huey::Errors::CouldNotFindHue
-			output.puts "RSpecHue: No Philips Hue found, skipping"
+			output.puts "RspecHue: No Philips Hue found, skipping"
 			@bulb = passed_bulb_or_null_bulb
 		rescue Huey::Errors::PressLinkButton
-			output.puts "RSpecHue: Not authorized, press linkbutton on Philips Hue, then press enter here to continue, or q and enter to skip."
 			if STDIN.tty?
+				output.puts "RspecHue: Not authorized, press linkbutton on Philips Hue, then press enter here to continue, or q and enter to skip."
 				input = gets.strip 
 				unless input.downcase == "q"
 					init_philips_hue
@@ -86,6 +86,7 @@ class PhilipsHueController
 					@bulb = passed_bulb_or_null_bulb
 				end
 			else
+				output.puts "RspecHue: Not authorized, press linkbutton on Philips Hue and try again"
 				@bulb = passed_bulb_or_null_bulb
 			end
 		end
