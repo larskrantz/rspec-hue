@@ -4,8 +4,9 @@ RspecHue is a formatter for RSpec that will show the status of your tests to the
 
 ## Installation
 
-Add this line to your application's Gemfile:
-_the gem is not on rubygems yet, use pointer to github instead_
+Clone it - the gem is not on rubygems as I don't feel that it is mature enough yet.
+Or use pointer to github instead:
+
 ```bash
 gem 'rspec-hue', git: 'git@github.com:larskrantz/rspec-hue.git'
 ```
@@ -16,11 +17,6 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-
-```bash
-$ gem install rspec-hue
-```
 ## Usage
 
 RspecHue depends on the [Huey](https://github.com/Veraticus/huey) gem that will auto-discover your [Philips Hue][] using [SSDP](http://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol). 
