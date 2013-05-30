@@ -7,13 +7,14 @@ class RspecHue
 		@additional_args = additional_args
 	end
 	#called by rspec
-	def dump_summary(duration, example_count, failure_count, pending_count)
+	def dump_summary duration, example_count, failure_count, pending_count
 		@bulb_controller = @additional_args.fetch(:controller) { setup_philips_hue_controller }
 		@failure_count = failure_count
 	end
-	def method_missing(m, *args, &block) end
+	# Catch everything else rspec throws at us, and swallow it.
+	def method_missing m, *args, &block; end
 
-	def self.configure()
+	def self.configure_rspec_for_settings
 		RSpec.configure do |c|
 			c.add_setting :rspec_hue_light_id
 			c.add_setting :rspec_hue_ip
@@ -59,5 +60,5 @@ class RspecHue
 		@bulb_controller
 	end
 end	
-
-RspecHue.configure
+# Must call to add setting-possibilty to RSpec
+RspecHue.configure_rspec_for_settings
