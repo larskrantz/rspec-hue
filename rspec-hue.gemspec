@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "yard"
   spec.add_runtime_dependency     "rspec"
-  spec.add_runtime_dependency     "huey"
+  spec.add_runtime_dependency     "huey", "~> 2.0"
 end
