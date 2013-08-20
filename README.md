@@ -4,11 +4,10 @@ RspecHue is a formatter for RSpec that will show the status of your tests to the
 
 ## Installation
 
-Clone it - the gem is not on rubygems as I don't feel that it is mature enough yet.
-Or use pointer to github instead:
+Note: Early version..
 
 ```bash
-gem 'rspec-hue', git: 'git@github.com:larskrantz/rspec-hue.git'
+gem 'rspec-hue'
 ```
 
 And then execute:

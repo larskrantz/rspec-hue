@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-hue"
-  spec.version       = '0.1.2' 
+  spec.version       = '0.1.3' 
   spec.authors       = ["larskrantz"]
   spec.email         = ["lars.krantz@alaz.se"]
   spec.description   = %q{Light up Philips Hue when testing}
@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "yard"
   spec.add_runtime_dependency     "rspec"
-  spec.add_runtime_dependency     "huey"
+  spec.add_runtime_dependency     "huey", "~> 2.0"
 end
