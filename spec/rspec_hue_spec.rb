@@ -34,5 +34,8 @@ describe RspecHue do
 		it "should respond dump_summary" do
 			expect { formatter.dump_summary 123,2,1,1 }.to_not raise_exception
 		end
+		it "should not raise error if calling close() before dump_summary" do
+			expect { formatter.close() }.to_not raise_exception
+		end
 	end
 end

@@ -5,6 +5,7 @@ class RspecHue
 	def initialize output, additional_args = {}
 		@output = output || StringIO.new
 		@additional_args = additional_args
+		@failure_count = 0
 	end
 	#called by rspec
 	def dump_summary duration, example_count, failure_count, pending_count
