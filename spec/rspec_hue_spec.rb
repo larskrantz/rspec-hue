@@ -28,6 +28,7 @@ describe RspecHue do
 			expect { set_rspec_setting :rspec_hue_api_user }.to_not raise_exception
 		end
 	end
+
 	context "when corresponding to the formatter interface" do
 		let(:controller) do
 			c = double("controller")
@@ -38,11 +39,11 @@ describe RspecHue do
 		let(:formatter) { RspecHue.new StringIO.new, controller: controller }
 
 		it "should respond dump_summary" do
-			expect { formatter.dump_summary 123,2,1,1 }.to_not raise_exception
+			expect { formatter.dump_summary "foo" }.to_not raise_exception
 		end
 
-		it "should not raise error if calling close() before dump_summary" do
-			expect { formatter.close() }.to_not raise_exception
+		it "should increment #failed_count by 1" do
+			expect { formatter.example_failed(nil) }.to change { formatter.failure_count }.by(1)
 		end
 	end
 end

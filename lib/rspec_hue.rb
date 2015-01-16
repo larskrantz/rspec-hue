@@ -16,7 +16,7 @@ class RspecHue
 		:example_failed,
     :dump_summary
 
-	attr_reader :output, :bulb_controller
+	attr_reader :output, :failure_count, :bulb_controller
 
 	class << self
 		def configure_rspec_for_settings
