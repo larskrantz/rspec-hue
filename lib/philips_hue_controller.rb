@@ -2,6 +2,7 @@ require 'huey'
 require 'null_bulb'
 
 class PhilipsHueController
+
 	def initialize options = {}
 		@configuration = default_options.merge options
 		if configuration.has_key? :bulb_id_to_use
@@ -10,18 +11,23 @@ class PhilipsHueController
 			@bulb = passed_bulb_or_null_bulb
 		end
 	end
+
 	def failed
-		bulb.update(configuration[:failed_color])		
+		bulb.update(configuration[:failed_color])
 	end
+
 	def passed
-		bulb.update(configuration[:passed_color])		
+		bulb.update(configuration[:passed_color])
 	end
+
 	private
+
 	def configuration
 		@configuration
 	end
+
 	def default_options
-		{ 
+		{
 			hue_ip: nil,
 			ssdp_ip: '239.255.255.250',
 			ssdp_port: 1900,
@@ -33,25 +39,30 @@ class PhilipsHueController
 			passed_color: { bri: 57, ct: 500, xy: [ 0.408, 0.517 ] }
 		}
 	end
+
 	def output
 		configuration[:output]
 	end
+
 	def bulb
 		@bulb
 	end
+
 	def passed_bulb_or_null_bulb
 		configuration.fetch(:bulb, NullBulb.new )
 	end
+
 	def init_bulb
 		@bulb = Huey::Bulb.find(configuration[:bulb_id_to_use]) if configuration.has_key? :bulb_id_to_use
 		@bulb = passed_bulb_or_null_bulb if @bulb.nil? #Huey return nil if not found
 		@bulb.on = true
 		@bulb.transitiontime = configuration[:bulb_transition_time]
 	end
+
 	def init_philips_hue
 	 	# Must do this, othwerwise Huey starts pushing out debug messages
 	 	Huey::Config.logger = ::Logger.new(nil)
-		begin		
+		begin
 			Huey.configure do |config|
 				if configuration[:hue_ip].nil?
 					config.ssdp = true
@@ -79,7 +90,7 @@ class PhilipsHueController
 		rescue Huey::Errors::PressLinkButton
 			if STDIN.tty?
 				output.puts "RspecHue: Not authorized, press linkbutton on Philips Hue, then press enter here to continue, or q and enter to skip."
-				input = gets.strip 
+				input = gets.strip
 				unless input.downcase == "q"
 					init_philips_hue
 				else
