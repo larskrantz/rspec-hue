@@ -8,13 +8,13 @@ describe PhilipsHueController do
 
 	context "when telling controller to light bulb for failing test" do
 		it "the bulb should receive update with failcolor" do
-			bulb.should_receive(:update).with(failed_color)
+			expect(bulb).to receive(:update).with(failed_color)
 			controller.failed
 		end
 	end
 	context "when telling controller to light bulb for passing test" do
 		it "the bulb should receive update with passcolor" do
-			bulb.should_receive(:update).with(passed_color)
+			expect(bulb).to receive(:update).with(passed_color)
 			controller.passed
 		end
 	end

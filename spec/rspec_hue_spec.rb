@@ -31,10 +31,10 @@ describe RspecHue do
 
 	context "when corresponding to the formatter interface" do
 		let(:controller) do
-			c = double("controller")
-			c.stub(:failed)
-			c.stub(:passed)
-			c
+			double("controller").tap do |c|
+				allow(c).to receive(:failed)
+				allow(c).to receive(:passed)
+			end
 		end
 		let(:formatter) { RspecHue.new StringIO.new, controller: controller }
 
